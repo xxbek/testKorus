@@ -1,0 +1,1 @@
+> python3 profit_calculation.py data/departments.csv data/operations.csv
