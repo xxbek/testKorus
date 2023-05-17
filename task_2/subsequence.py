@@ -11,8 +11,11 @@ def _get_int_from_file(path: str) -> Iterator[int]:
     with open(path, 'r') as f:
         for row in f:
             row = row.strip()
-            if row.isnumeric() or row.lstrip('-').isnumeric():
-                yield int(row)
+            try:
+                if row.isnumeric() or row.lstrip('-').isnumeric():
+                    yield int(row)
+            except ValueError:
+                logging.warning(f'Error by getting value {row}')
 
 
 def _find_subsequence_len(path: str) -> str:
